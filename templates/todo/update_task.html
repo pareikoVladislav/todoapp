@@ -1,0 +1,54 @@
+{% extends 'main.html' %}
+
+{% block title %}
+    Update task
+{% endblock %}
+
+{% block content %}
+	<div class="new-task-title">
+        Update Task
+    </div>
+    <div class="new-task-container">
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input type="text" class="form-control" id="title" name="title" maxlength="25" placeholder="Title">
+            </div>
+
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea class="form-control" id="description" name="description" maxlength="1500"
+                          placeholder="Description"></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
+                <select class="form-control" id="category" name="category">
+                    <option value="" selected="">---</option> <!-- For optional category -->
+                    {% for category in categories %}
+                        <option value="{{ category.id }}">{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="status" class="form-label">Status</label>
+                <select class="form-control" id="status" name="status">
+                    <option value="" selected="">---</option>
+                    {% for status in statuses %}
+                        <option value="{{ status.id }}">{{ status.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="updated_at" class="form-label">Updated At</label>
+                <input type="date" class="form-control" id="updated_at" name="updated_at">
+            </div>
+
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+{% endblock %}

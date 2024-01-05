@@ -8,5 +8,5 @@ createuser:
 run:
 	python manage.py runserver
 
-static:
+collect_static:
 	python manage.py collectstatic

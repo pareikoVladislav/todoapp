@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+
+{% block title %}
+    All Tasks
+{% endblock %}
+
+{% block content %}
+    <div class="todos">
+        {% for task in tasks %}
+            <a href="{% url 'router:tasks:task-info' task.id %}" class="task-link">
+                <div class="task">
+                    <h2>title: {{ task.title }}</h2>
+                    <h4>category: {{ task.category }}</h4>
+                    <h4>status: <b>{{ task.status }}</b></h4>
+                    <p><b>description: </b>{{ task.description }}</p>
+                    <h4>creator: {{ task.creator }}</h4>
+                    <h4>date started: {{ task.date_started }}</h4>
+                    <h4>deadline: {{ task.deadline }}</h4>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}
