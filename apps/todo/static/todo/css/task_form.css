@@ -1,0 +1,51 @@
+.new-task-title {
+    text-align: center;
+    color: #2ECC71;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.new-task-container {
+    border: 1px solid #2ECC71;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(46, 204, 113, 0.5);
+    background-color: #ecf0f1;
+    width: 600px;
+    margin: 50px auto auto;
+}
+
+.new-task-container input[type="text"],
+.new-task-container input[type="date"],
+.new-task-container input[type="datetime-local"],
+.new-task-container textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.new-task-container button {
+    width: 100%;
+    background-color: #2ECC71;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.new-task-container button:hover {
+    background-color: #45a049;
+}
+
+.new-task-container label {
+    margin-top: 10px;
+    display: block;
+}
