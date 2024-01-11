@@ -1,0 +1,30 @@
+[
+{
+    "model": "todo.status",
+    "pk": 1,
+    "fields": {
+        "name": "NEW"
+    }
+},
+{
+    "model": "todo.status",
+    "pk": 2,
+    "fields": {
+        "name": "IN PROGRESS"
+    }
+},
+{
+    "model": "todo.status",
+    "pk": 3,
+    "fields": {
+        "name": "PENDING"
+    }
+},
+{
+    "model": "todo.status",
+    "pk": 4,
+    "fields": {
+        "name": "DONE"
+    }
+}
+]

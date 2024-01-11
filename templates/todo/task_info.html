@@ -6,18 +6,21 @@
 
 {% block content %}
     <div class="task-content">
-        <div class="task-info">
-            <h2>title: {{ task.title }}</h2>
-            <h4>category: {{ task.category }}</h4>
-            <h4>status: <b>{{ task.status }}</b></h4>
-            <p><b>description: </b>{{ task.description }}</p>
-            <h4>creator: {{ task.creator }}</h4>
-            <h4>date started: {{ task.date_started }}</h4>
-            <h4>deadline: {{ task.deadline }}</h4>
-        </div>
-        <div class="button-container">
-            <button class="update-button"><a href="{% url 'router:tasks:update-task' task.id %}">Update</a></button>
-            <button class="delete-button"><a href="{% url 'router:tasks:delete-task' task.id %}">Delete</a></button>
+        <div class="task-block">
+            <div class="task-info">
+                <h2><span class="task-info-fields">Title: </span>{{ task.title }}</h2>
+                <h4><span class="task-info-fields">Category: </span>{{ task.category }}</h4>
+                <h4><span class="task-info-fields">Status: </span><b>{{ task.status }}</b></h4>
+                <p><span class="task-info-fields">Description: </span>{{ task.description }}</p>
+                <h4><span class="task-info-fields">Creator: </span>{{ task.creator }}</h4>
+                <h4><span class="task-info-fields">Date started: </span>{{ task.date_started }}</h4>
+                <h4><span class="task-info-fields">Deadline: </span>{{ task.deadline }}</h4>
+            </div>
+            <div class="button-container">
+                <a href="{% url 'router:tasks:update-task' task.id %}" class="update-button">Update</a>
+                <a href="{% url 'router:tasks:delete-task' task.id %}" class="delete-button">Delete</a>
+                <a href="#" class="create-subtask">Create subtask</a>
+            </div>
         </div>
     </div>
 {% endblock %}

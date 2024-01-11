@@ -26,9 +26,7 @@
                 <label for="creator" class="form-label">Creator</label>
                 <select class="form-control" id="creator" name="creator">
                     <option value="" selected="">---</option>
-                    {% for user in users %}
                         <option value="{{ user.id }}">{{ user.username }}</option>
-                    {% endfor %}
                 </select>
             </div>
 

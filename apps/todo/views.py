@@ -31,7 +31,7 @@ def get_all_tasks(request):
 
 
 def create_new_task(request):
-    users = User.objects.all()
+    user = get_object_or_404(User, id=request.user.id)
     categories = Category.objects.all()
     statuses = Status.objects.all()
 
@@ -44,7 +44,7 @@ def create_new_task(request):
 
         context = {
             "form": form,
-            "users": users,
+            "users": user,
             "categories": categories,
             "statuses": statuses
         }
@@ -53,7 +53,7 @@ def create_new_task(request):
         form = CreateTaskForm()
         context = {
             "form": form,
-            "users": users,
+            "users": user,
             "categories": categories,
             "statuses": statuses
         }
@@ -79,6 +79,7 @@ def update_task(request, task_id):
 
         context = {
             "form": form,
+            "task": task,
             "categories": categories,
             "statuses": statuses
         }
@@ -87,6 +88,7 @@ def update_task(request, task_id):
 
         context = {
             "form": form,
+            "task": task,
             "categories": categories,
             "statuses": statuses
         }

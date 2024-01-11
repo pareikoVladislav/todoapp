@@ -5,28 +5,29 @@
 {% endblock %}
 
 {% block content %}
-	<div class="new-task-title">
+    <div class="update-task-title">
         Update Task
     </div>
-    <div class="new-task-container">
-        <form method="post">
+    <div class="task-container-form">
+        <form method="post" autocomplete="on">
             {% csrf_token %}
 
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input type="text" class="form-control" id="title" name="title" maxlength="25" placeholder="Title">
+                <input type="text" class="form-control" id="title" name="title"
+                       maxlength="25" placeholder="Title" value="{{ task.title }}">
             </div>
 
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <textarea class="form-control" id="description" name="description" maxlength="1500"
-                          placeholder="Description"></textarea>
+                <textarea class="form-control" id="description" name="description"
+                          maxlength="1500">{{ task.description }}</textarea>
             </div>
 
             <div class="mb-3">
                 <label for="category" class="form-label">Category</label>
                 <select class="form-control" id="category" name="category">
-                    <option value="" selected="">---</option> <!-- For optional category -->
+                    <option value="" selected="">{{ task.category }}</option> <!-- For optional category -->
                     {% for category in categories %}
                         <option value="{{ category.id }}">{{ category.name }}</option>
                     {% endfor %}
@@ -36,7 +37,7 @@
             <div class="mb-3">
                 <label for="status" class="form-label">Status</label>
                 <select class="form-control" id="status" name="status">
-                    <option value="" selected="">---</option>
+                    <option value="" selected="">{{ task.status }}</option>
                     {% for status in statuses %}
                         <option value="{{ status.id }}">{{ status.name }}</option>
                     {% endfor %}
@@ -44,8 +45,8 @@
             </div>
 
             <div class="mb-3">
-                <label for="updated_at" class="form-label">Updated At</label>
-                <input type="date" class="form-control" id="updated_at" name="updated_at">
+                <label for="deadline" class="form-label">Deadline</label>
+                <input type="date" class="form-control" id="deadline" name="deadline">
             </div>
 
             <button type="submit" class="btn btn-primary">Update</button>

@@ -1,3 +1,6 @@
+import datetime
+
+import django.utils.timezone
 from django.contrib.auth.models import User
 from django.db import models
 
@@ -29,7 +32,7 @@ class Status(models.Model):
 class Task(models.Model):
     title = models.CharField(
         max_length=75,
-        default="DEFAULT TITLE!!!",
+        default="DEFAULT TITLE",
         unique_for_date='date_started'
     )
     description = models.TextField(
@@ -39,7 +42,9 @@ class Task(models.Model):
     )
     creator = models.ForeignKey(
         User,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True
     )
     category = models.ForeignKey(
         Category,
@@ -49,18 +54,24 @@ class Task(models.Model):
     )
     status = models.ForeignKey(
         Status,
-        on_delete=models.SET(1)
+        on_delete=models.SET(1),
+        blank=True,
+        null=True
     )
     date_started = models.DateField(
-        help_text="День, когда задача должна начаться"
+        help_text="День, когда задача должна начаться",
+        blank=True,
+        null=True
     )
     deadline = models.DateField(
-        help_text="День, когда задача должна быть выполнена"
+        help_text="День, когда задача должна быть выполнена",
+        blank=True,
+        null=True
     )
     created_at = models.DateTimeField(
         auto_now_add=True
     )
-    updated_at = models.DateTimeField(null=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True)
     deleted_at = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
@@ -72,8 +83,8 @@ class Task(models.Model):
 
 
 class SubTask(models.Model):
-    title = models.CharField(max_length=75)
-    description = models.CharField(max_length=1500)
+    title = models.CharField(max_length=75, blank=True)
+    description = models.CharField(max_length=1500, blank=True)
     category = models.ForeignKey(
         Category,
         null=True,
@@ -84,24 +95,27 @@ class SubTask(models.Model):
         Task,
         on_delete=models.CASCADE,
         related_name='subtasks',
-        limit_choices_to={
-            "status": 1,
-        }
+        blank=True,
+        null=True
     )
     status = models.ForeignKey(
         Status,
-        on_delete=models.SET(1)
+        on_delete=models.SET(1),
+        blank=True,
+        null=True
     )
     creator = models.ForeignKey(
         User,
-        on_delete=models.CASCADE
+        on_delete=models.CASCADE,
+        blank=True,
+        null=True
     )
-    date_started = models.DateField()
-    deadline = models.DateField()
+    date_started = models.DateField(blank=True)
+    deadline = models.DateField(blank=True)
     created_at = models.DateTimeField(
         auto_now_add=True
     )
-    updated_at = models.DateTimeField(null=True, blank=True)
+    updated_at = models.DateTimeField(auto_now=True)
     deleted_at = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):

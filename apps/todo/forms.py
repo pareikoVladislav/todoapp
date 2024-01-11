@@ -38,4 +38,4 @@ class CreateTaskForm(ModelForm):
 class TaskUpdateForm(ModelForm):
     class Meta:
         model = Task
-        fields = ('title', 'description', 'category', 'status', 'updated_at')
+        fields = ('title', 'description', 'category', 'status')
