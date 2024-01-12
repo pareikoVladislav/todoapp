@@ -16,6 +16,17 @@
     height: 447px;
 }
 
+.task-block::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    box-shadow: 4px 0 10px rgba(46, 204, 113, 0.5);
+    pointer-events: none;
+}
+
 .task-info {
     padding: 20px 10px 0 20px;
     border-radius: 10px;
@@ -36,52 +47,63 @@
     color: rgba(22, 160, 133, 0.8);
 }
 
-.button-container {
+.task-subtasks {
     display: flex;
-    justify-content: center;
-    gap: 10px; /* Добавляет пространство между кнопками */
-    align-items: center;
+    flex-direction: column;
+    height: 600px;
+    max-height: 600px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 25px;
 }
 
-
-.update-button, .delete-button {
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    background-color: transparent; /* Прозрачный фон */
-    transition: background-color 0.3s ease;
+.task-subtasks::-webkit-scrollbar {
+    width: 1px;
 }
 
-.update-button {
-    text-decoration: none;
+.task-subtasks::-webkit-scrollbar-track {
+    background: rgba(22, 160, 133, 0.6);
+}
+
+.task-subtasks::-webkit-scrollbar-thumb {
+    background-color: rgba(22, 160, 133, 0.6); /* Цвет бегунка скроллбара */
+    border-radius: 10px; /* Закругленные углы для бегунка */
+}
+
+.task-subtasks::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(22, 160, 133, 0.8); /* Более темный цвет бегунка при наведении */
+}
+
+.subtask-info {
+    background-color: inherit;
     border: 2px solid rgba(22, 160, 133, 0.6);
     box-shadow: 0 0 10px rgba(22, 160, 133, 0.8);
-    color: rgba(22, 160, 133, 0.8);
+    width: 640px;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    margin-top: 3em;
+    padding: 0 15px;
 }
 
-.update-button:hover {
-    background-color: rgba(22, 160, 133, 0.2);
-    color: #c3c1c1;
-}
-
-.delete-button {
+.subtask-title {
     text-decoration: none;
-    color: rgba(231, 76, 60, 0.6);
-    border: 2px solid rgba(231, 76, 60, 0.6); /* Красная граница */
-    box-shadow: 0 0 10px rgba(231, 76, 60, 0.8);
-}
-
-.delete-button:hover {
-    color: #c3c1c1;
-    background-color: rgba(231, 76, 60, 0.2);
-}
-
-.create-subtask {
+    color: rgba(22, 160, 133, 0.6);
     font-weight: 600;
-    box-shadow: 0 0 10px rgba(22, 160, 133, 0.6);
+    font-size: 26px;
+    transition: 0.3s ease;
+    width: 171px;
 }
 
-.create-subtask:hover {
-    box-shadow: 0 0 10px rgba(22, 160, 133, 0.8);
+.subtask-title:hover {
+    color: #c0bfbf;
+    cursor: pointer;
+}
+
+.subtask-info h3 {
+    color: rgba(22, 160, 133, 0.8);
+    font-weight: 600;
+    width: 171px;
 }

@@ -1,0 +1,68 @@
+.new-subtask-title, .update-subtask-title {
+    text-align: center;
+    color: rgba(46, 204, 153, 0.5);
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.subtask-container-form, .new-subtask-container {
+    border: 1px solid rgba(46, 204, 153, 0.5);
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(46, 204, 153, 0.8);
+    background-color: inherit;
+    width: 600px;
+    margin: 50px auto;
+}
+
+.subtask-form-label {
+    color: rgba(46, 204, 153, 0.4);
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.subtask-form-control {
+    background-color: transparent;
+    border: 1px solid rgba(46, 204, 153, 0.5);
+    color: #c0bfbf;
+    padding: 8px;
+    margin: 8px 0;
+    display: inline-block;
+    border-radius: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    box-shadow: 0 0 10px rgba(46, 204, 153, 0.6);
+}
+
+.subtask-form-control:hover,
+.subtask-form-control:focus {
+    border-color: rgba(46, 204, 153, 0.75);
+    box-shadow: 0 0 10px rgba(46, 204, 153, 0.8);
+    outline: none;
+}
+
+.subtask-create-button,
+.subtask-update-button {
+    background-color: rgba(46, 204, 153, 0.1);
+    border: 1px solid rgba(46, 204, 153, 0.5);
+    color: rgba(46, 204, 153, 0.5);
+    font-weight: 600;
+    font-size: 25px;
+    transition: all 0.3s ease;
+    margin: 0 auto;
+    width: 100%;
+    padding: 14px 20px;
+    cursor: pointer;
+    display: block;
+    border-radius: 4px;
+}
+
+.subtask-create-button:hover,
+.subtask-update-button:hover {
+    background-color: rgba(46, 204, 153, 0.1);
+    color: #c0bfbf;
+    border-color: rgba(46, 204, 153, 0.75);
+    box-shadow: 0 0 10px rgba(46, 204, 153, 0.8);
+}

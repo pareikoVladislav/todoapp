@@ -1,0 +1,23 @@
+{% extends 'main.html' %}
+
+{% block title %}
+    Subtask Info
+{% endblock %}
+
+{% block content %}
+    <div class="subtask-container">
+        <div class="subtask-block">
+            <h2 class="subtask-block-info"><span class="subtask-info-fields">Title: </span>{{ subtask.title }}</h2>
+            <h4 class="subtask-block-info"><span class="subtask-info-fields">Category: </span>{{ subtask.category }}</h4>
+            <h4 class="subtask-block-info"><span class="subtask-info-fields">Status: </span><b>{{ subtask.status }}</b></h4>
+            <p class="subtask-block-info"><span class="subtask-info-fields">Description: </span>{{ subtask.description }}</p>
+            <h4 class="subtask-block-info"><span class="subtask-info-fields">Creator: </span>{{ subtask.creator }}</h4>
+            <h4 class="subtask-block-info"><span class="subtask-info-fields">Date started: </span>{{ subtask.date_started }}</h4>
+            <h4 class="subtask-block-info"><span class="subtask-info-fields">Deadline: </span>{{ subtask.deadline }}</h4>
+        </div>
+        <div class="button-container">
+            <a href="{% url 'router:tasks:update-subtask' subtask.id %}" class="update-button">Update</a>
+            <a href="#" class="delete-button">Delete</a>
+        </div>
+    </div>
+{% endblock %}

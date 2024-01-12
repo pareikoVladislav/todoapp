@@ -1,0 +1,81 @@
+{% extends 'main.html' %}
+
+{% block title %}
+    Create Subtask
+{% endblock %}
+
+{% block content %}
+    <div class="new-subtask-title">
+        Create New Sub Task
+    </div>
+    <div class="new-subtask-container">
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="subtask-subtask-mb-3">
+                <label for="title" class="subtask-form-label">Title</label>
+                <input type="text" class="subtask-form-control" id="title" name="title" maxlength="25">
+            </div>
+
+            <div class="subtask-mb-3">
+                <label for="description" class="subtask-form-label">Description</label>
+                <textarea class="subtask-form-control" id="description" name="description"
+                          maxlength="1500"></textarea>
+            </div>
+
+            <div class="subtask-mb-3">
+                <label for="category" class="subtask-form-label">Category</label>
+                <select class="subtask-form-control" id="category" name="category">
+                    <option value="" selected="">---</option> <!-- For optional category -->
+                    {% for category in categories %}
+                        <option value="{{ category.id }}">{{ category.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="subtask-mb-3">
+                <label for="task" class="subtask-form-label">Task</label>
+                <select class="subtask-form-control" id="task" name="task">
+                    <option value="{{ task.id }}">{{ task.title }}</option>
+                </select>
+            </div>
+
+            <div class="subtask-mb-3">
+                <label for="status" class="subtask-form-label">Status</label>
+                <select class="subtask-form-control" id="status" name="status">
+                    <option value="" selected="">---</option>
+                    {% for status in statuses %}
+                        <option value="{{ status.id }}">{{ status.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="subtask-mb-3">
+                <label for="creator" class="subtask-form-label">Creator</label>
+                <select class="subtask-form-control" id="creator" name="creator">
+                    <option value="{{ user.id }}">{{ user.username }}</option>
+                </select>
+            </div>
+
+            <div class="subtask-mb-3">
+                <label for="date_started" class="subtask-form-label">Date Started</label>
+                <input type="date" class="subtask-form-control" id="date_started" name="date_started">
+            </div>
+
+            <div class="subtask-mb-3">
+                <label for="deadline" class="subtask-form-label">Deadline</label>
+                <input type="date" class="subtask-form-control" id="deadline" name="deadline">
+            </div>
+
+            <button type="submit" class="subtask-create-button">Create</button>
+            {{ form.title.errors }}
+            {{ form.description.errors }}
+            {{ form.category.errors }}
+            {{ form.task.errors }}
+            {{ form.status.errors }}
+            {{ form.creator.errors }}
+            {{ form.date_started.errors }}
+            {{ form.deadline.errors }}
+        </form>
+    </div>
+{% endblock %}

@@ -10,6 +10,7 @@ from apps.todo.models import (
     Category,
     Status,
     Task,
+    SubTask
 )
 
 
@@ -38,4 +39,25 @@ class CreateTaskForm(ModelForm):
 class TaskUpdateForm(ModelForm):
     class Meta:
         model = Task
-        fields = ('title', 'description', 'category', 'status')
+        fields = ('title', 'description', 'category', 'status', 'deadline')
+
+
+class SubTaskCreateForm(ModelForm):
+    class Meta:
+        model = SubTask
+        fields = [
+            'title',
+            'description',
+            'category',
+            'task',
+            'status',
+            'creator',
+            'date_started',
+            'deadline'
+        ]
+
+
+class SubTaskUpdateForm(ModelForm):
+    class Meta:
+        model = SubTask
+        fields = ['title', 'description', 'category', 'status', 'deadline']

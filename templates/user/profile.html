@@ -1,0 +1,71 @@
+{% extends 'main.html' %}
+
+{% block title %}
+    {{ user.username }} | Profile
+{% endblock %}
+
+{% block content %}
+    <div class="profile-container">
+        <div class="main-info">
+            <div class="photo-block">
+                <img src="https://imgs.search.brave.com/MWlI8P3aJROiUDO9A-LqFyca9kSRIxOtCg_Vf1xd9BA/rs:fit:860:0:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzAyLzE1Lzg0LzQz/LzM2MF9GXzIxNTg0/NDMyNV90dFg5WWlJ/SXllYVI3TmU2RWFM/TGpNQW15NEd2UEM2/OS5qcGc"
+                     alt="#" class="prof-photo">
+                <h3>{{ user.username }}</h3>
+            </div>
+            <div class="prof-buttons">
+                <a href="{% url 'router:user:log-out' %}" class="log-out">Logout</a>
+                <a href="#" class="edit-profile">Edit profile</a>
+            </div>
+        </div>
+        <div class="tasks-info-block">
+            <div class="header-task-block">
+                <h4 class="header-task-counter">{{ tasks.count }}</h4>
+                <p class="header-task-name">Tasks</p>
+            </div>
+            <div class="header-subtask-block">
+                <h4 class="header-subtask-counter">{{ subtasks.count }}</h4>
+                <p class="header-subtask-name">Subtasks</p>
+            </div>
+        </div>
+
+        <div class="about-block">
+            <h3>About</h3>
+            <div class="user-info">
+                {% if user.first_name and user.last_name %}
+                    <h3><b>Name: </b><span>{{ user.first_name }}</span></h3>
+                    <h3><b>Surname: </b><span>{{ user.last_name }}</span></h3>
+                    <h3><b>Username: </b><span>{{ user.username }}</span></h3>
+                    <h3><b>Email: </b><span>{{ user.email }}</span></h3>
+                {% else %}
+                    <h3><b>Username: </b><span>{{ user.username }}</span></h3>
+                    <h3><b>Email: </b><span>{{ user.email }}</span></h3>
+                {% endif %}
+
+            </div>
+        </div>
+
+        <div class="tasks-block">
+            <div class="recent-tasks">
+                <h3>Recent Tasks</h3>
+                <a href="{% url 'router:tasks:all-tasks' %}" class="all-tasks-link">Show all</a>
+            </div>
+            <div class="all-tasks">
+                {% for task in tasks|slice:":4" %}
+                    <a href="{% url 'router:tasks:task-info' task.id %}" class="user-task-link">
+                        <div class="profile-task-block">
+                            <h5 class="task-title">
+                                {{ task.title|slice:":15" }}{% if task.title|length > 15 %}...{% endif %}
+                            </h5>
+                            <p class="task-status"><b>status: </b>
+                                {{ task.status.name|slice:":6" }}{% if task.status.name|length > 6 %}...{% endif %}
+                            </p>
+                            <p class="task-category"><b>category: </b>
+                                {{ task.category.name|slice:":6" }}{% if task.category.name|length > 6 %}...{% endif %}
+                            </p>
+                        </div>
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -19,8 +19,29 @@
             <div class="button-container">
                 <a href="{% url 'router:tasks:update-task' task.id %}" class="update-button">Update</a>
                 <a href="{% url 'router:tasks:delete-task' task.id %}" class="delete-button">Delete</a>
-                <a href="#" class="create-subtask">Create subtask</a>
+                <a href="{% url 'router:tasks:create-subtask' %}?task_id={{ task.id }}" class="create-subtask">Create subtask</a>
             </div>
         </div>
+        {% if subtasks %}
+            <div class="task-subtasks">
+                {% for subtask in subtasks %}
+                    <div class="subtask-info">
+                        <a href="{% url 'router:tasks:subtask-info' subtask.id %}" class="subtask-title">
+                            {{ subtask.title|slice:":10" }}{% if subtask.title|length > 10 %}...{% endif %}
+                        </a>
+                        <h3>{{ subtask.status }}</h3>
+                        <div class="button-container">
+                            <a href="{% url 'router:tasks:update-subtask' subtask.id %}" class="update-button">Update</a>
+                            <a href="{% url 'router:tasks:delete-subtask' subtask.id %}" class="delete-button">Delete</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="no-subtasks-block">
+                <h1>You don't have any subtasks for this task</h1>
+                <a href="{% url 'router:tasks:create-subtask' %}?task_id={{ task.id }}" class="create-subtask">Create subtask</a>
+            </div>
+        {% endif %}
     </div>
 {% endblock %}

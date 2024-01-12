@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="{% static 'todo/css/subtasks.css' %}">
     <link rel="stylesheet" href="{% static 'todo/css/subtask_form.css' %}">
 
+    <link rel="stylesheet" href="{% static 'user/css/login.css' %}">
+    <link rel="stylesheet" href="{% static 'user/css/profile.css' %}">
+
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;600;900&display=swap" rel="stylesheet">
     <title>{% block title %}{% endblock %}</title>
 </head>
@@ -21,13 +24,13 @@
             <a class="nav-link" aria-current="page" href="{% url 'router:home' %}">Home</a>
         </li>
         <li class="header-item">
-            <a class="nav-link" href="#">Profile</a>
+            <a class="nav-link" href="{% url 'router:user:info' %}">Profile</a>
         </li>
         <li class="header-item">
             <a class="nav-link" href="{% url 'router:tasks:all-tasks' %}">Tasks</a>
         </li>
         <li class="header-item">
-            <a class="nav-link" href="#">Subtasks</a>
+            <a class="nav-link" href="{% url 'router:tasks:all-subtasks' %}">Subtasks</a>
         </li>
         <li class="header-item">
             <a class="nav-link" href="{% url 'router:tasks:create-task' %}" tabindex="-1">Add Task</a>

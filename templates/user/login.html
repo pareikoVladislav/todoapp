@@ -1,0 +1,29 @@
+{% extends 'main.html' %}
+
+{% block title %}
+	Login
+{% endblock %}
+
+{% block content %}
+	<div class="login-container">
+        <form method="post" class="log-in-form">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label for="username" class="log-in-form-label">Username</label>
+                {{ form.username }}
+            </div>
+            <div class="mb-3">
+                <label for="password1" class="log-in-form-label">Password</label>
+                {{ form.password }}
+            </div>
+            
+            <button type="submit" class="login-button">Login</button>
+            
+            <div class="login-account-choice">
+                <p>You don't have an account?</p>
+                <a href="{% url 'router:user:register' %}">Register</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'main.html' %}
+
+{% block title %}
+    Registration
+{% endblock %}
+
+{% block content %}
+    <div class="registration-container">
+        <form method="post" class="register-form">
+            {% csrf_token %}
+
+            <div class="mb-3">
+                <label class="registration-form-label">Name</label>
+                {{ form.first_name }}
+                {{ form.first_name.errors }}
+            </div>
+
+            <div class="mb-3">
+                <label class="registration-form-label">Surname</label>
+                {{ form.last_name }}
+                {{ form.last_name.errors }}
+            </div>
+
+            <div class="mb-3">
+                <label for="username" class="registration-form-label">Username</label>
+                {{ form.username }}
+                {{ form.username.errors }}
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="registration-form-label">Email</label>
+                {{ form.email }}
+                {{ form.email.errors }}
+            </div>
+
+            <div class="mb-3">
+                <label for="password1" class="registration-form-label">Password</label>
+                {{ form.password1 }}
+                {{ form.password1.errors }}
+            </div>
+
+            <div class="mb-3">
+                <label for="password2" class="registration-form-label">Repeat Password</label>
+                {{ form.password2 }}
+                {{ form.password2.errors }}
+            </div>
+
+            <button type="submit" class="register-button">Register</button>
+            <div class="register-account-choice">
+                <p>Already have an account??</p>
+                <a href="{% url 'router:user:login' %}">Log-in</a>
+            </div>
+            {{ form.non_field_errors }}
+        </form>
+    </div>
+{% endblock %}

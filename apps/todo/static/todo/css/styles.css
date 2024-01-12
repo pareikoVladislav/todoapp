@@ -23,7 +23,7 @@ html::-webkit-scrollbar-thumb:hover, body::-webkit-scrollbar-thumb:hover {
 }
 
 body {
-    background: url("https://wallpaperaccess.com/full/2367430.jpg") no-repeat center center fixed; /* картинка заднего фона, без повторений, растянуть на весь экран, фиксированное положение */
+    background: url("https://wallpaperaccess.com/full/487834.jpg") no-repeat center center fixed; /* картинка заднего фона, без повторений, растянуть на весь экран, фиксированное положение */
     background-size: cover; /* растянуть на весь экран равномерно */
 }
 
@@ -84,4 +84,44 @@ body {
     box-shadow: 0 0 10px rgba(22, 160, 133, 0.8);
     background-color: rgba(22, 160, 133, 0.1);
     color: #e0e0e0;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Добавляет пространство между кнопками */
+    align-items: center;
+}
+
+.update-button, .delete-button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: transparent; /* Прозрачный фон */
+    transition: background-color 0.3s ease;
+}
+
+.update-button {
+    text-decoration: none;
+    border: 2px solid rgba(22, 160, 133, 0.6);
+    box-shadow: 0 0 10px rgba(22, 160, 133, 0.8);
+    color: rgba(22, 160, 133, 0.8);
+}
+
+.update-button:hover {
+    background-color: rgba(22, 160, 133, 0.2);
+    color: #c3c1c1;
+}
+
+.delete-button {
+    text-decoration: none;
+    color: rgba(231, 76, 60, 0.6);
+    border: 2px solid rgba(231, 76, 60, 0.6); /* Красная граница */
+    box-shadow: 0 0 10px rgba(231, 76, 60, 0.8);
+}
+
+.delete-button:hover {
+    color: #c3c1c1;
+    background-color: rgba(231, 76, 60, 0.2);
 }
