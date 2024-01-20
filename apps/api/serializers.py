@@ -12,7 +12,35 @@ from apps.todo.models import (
 )
 
 
+class SubTaskSerializer(serializers.ModelSerializer):
+    category = serializers.SlugRelatedField(
+        slug_field='name',
+        queryset=Category.objects.all()
+    )
+    status = serializers.SlugRelatedField(
+        slug_field='name',
+        queryset=Status.objects.all()
+    )
+
+    class Meta:
+        model = SubTask
+        fields = [
+            'id',
+            'title',
+            'description',
+            'category',
+            'task',
+            'status',
+            'creator',
+            'date_started',
+            'deadline',
+            'created_at'
+        ]
+
+
 class SubTaskPreviewSerializer(serializers.ModelSerializer):
+    status = serializers.StringRelatedField()
+
     class Meta:
         model = SubTask
         fields = ['id', 'title', 'status']
@@ -20,6 +48,9 @@ class SubTaskPreviewSerializer(serializers.ModelSerializer):
 
 class TaskInfoSerializer(serializers.ModelSerializer):
     subtasks = SubTaskPreviewSerializer(many=True, read_only=True)
+
+    category = serializers.StringRelatedField()
+    status = serializers.StringRelatedField()
 
     class Meta:
         model = Task
